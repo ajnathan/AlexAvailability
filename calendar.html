@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table {
+			border-collapse: collapse;
+			background: white;
+			color: black;
+		}
+		
+		th,
+		td {
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<h2 align="center" style="color: rgb(0, 0, 0);">
+		Alex's Availability
+	</h2>
+    <center style = "font-size:20px">
+    <span style="color: #e0c000;font-size:30px">
+		■
+	</span>Only for Brunch
+    <span style="color: #6050e0;font-size:30px">
+		■
+    </span>Only for Dinner/Drinks
+    <span style="color: #303030;font-size:30px">
+		■
+    </span>Unavailable</center>
+	<br />
+
+	<table bgcolor="lightgrey" align="center"
+		cellspacing="21" cellpadding="21">
+
+		<caption align="top">
+		</caption>
+
+		<thead>
+			<tr>
+				<th style="color: white; background: purple;">
+					Sun</th>
+				<th style="color: white; background: purple;">
+					Mon</th>
+				<th style="color: white; background: purple;">
+					Tue</th>
+				<th style="color: white; background: purple;">
+					Wed</th>
+				<th style="color: white; background: purple;">
+					Thu</th>
+				<th style="color: white; background: purple;">
+					Fri</th>
+				<th style="color: white; background: purple;">
+					Sat</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td id="cell0"><span id="cell0date"></span></td>
+				<td id="cell1"><span id="cell1date"></span></td>
+				<td id="cell2"><span id="cell2date"></span></td>
+				<td id="cell3"><span id="cell3date"></span></td>
+				<td id="cell4"><span id="cell4date"></span></td>
+				<td id="cell5"><span id="cell5date"></span></td>
+				<td id="cell6"><span id="cell6date"></span></td>
+			</tr>
+			<tr>
+				<td id="cell7"><span id="cell7date"></span></td>
+				<td id="cell8"><span id="cell8date"></span></td>
+				<td id="cell9"><span id="cell9date"></span></td>
+				<td id="cell10"><span id="cell10date"></span></td>
+				<td id="cell11"><span id="cell11date"></span></td>
+				<td id="cell12"><span id="cell12date"></span></td>
+				<td id="cell13"><span id="cell13date"></span></td>
+			</tr>
+			<tr>
+				<td id="cell14"><span id="cell14date"></span></td>
+				<td id="cell15"><span id="cell15date"></span></td>
+				<td id="cell16"><span id="cell16date"></span></td>
+				<td id="cell17"><span id="cell17date"></span></td>
+				<td id="cell18"><span id="cell18date"></span></td>
+				<td id="cell19"><span id="cell19date"></span></td>
+				<td id="cell20"><span id="cell20date"></span></td>
+			</tr>
+			<tr>
+				<td id="cell21"><span id="cell21date"></span></td>
+				<td id="cell22"><span id="cell22date"></span></td>
+				<td id="cell23"><span id="cell23date"></span></td>
+				<td id="cell24"><span id="cell24date"></span></td>
+				<td id="cell25"><span id="cell25date"></span></td>
+				<td id="cell26"><span id="cell26date"></span></td>
+				<td id="cell27"><span id="cell27date"></span></td>
+			</tr>
+			<tr>
+				<td id="cell28"><span id="cell28date"></span></td>
+				<td id="cell29"><span id="cell29date"></span></td>
+				<td id="cell30"><span id="cell30date"></span></td>
+				<td id="cell31"><span id="cell31date"></span></td>
+				<td id="cell32"><span id="cell32date"></span></td>
+				<td id="cell33"><span id="cell33date"></span></td>
+				<td id="cell34"><span id="cell34date"></span></td>
+			</tr>
+			<tr>
+				<td id="cell35"><span id="cell35date"></span></td>
+				<td id="cell36"><span id="cell36date"></span></td>
+				<td id="cell37"><span id="cell37date"></span></td>
+				<td id="cell38"><span id="cell38date"></span></td>
+				<td id="cell39"><span id="cell39date"></span></td>
+				<td id="cell40"><span id="cell40date"></span></td>
+				<td id="cell41"><span id="cell41date"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+<script>
+    //Variables
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    cell_today = mm + '/' + dd
+    today.getDay()
+    var today_num
+    
+    var cells = new Array (7*6)
+    for (var i = 0; i <cells.length; i++) {
+        var cell = {
+            "date":"",
+            "isToday": 0,
+            "daysFromToday":0,
+            "AM": 1,
+            "PM": 1,
+            "format": "",
+            }
+            cells[i]= cell    
+    }
+    
+
+
+    for (var i = 0; i < 7; i++) {
+        if(i==today.getDay()){
+            cells[i]["isToday"] = 1
+            today_num=i
+        }
+    }
+    
+    for (var i = 0; i <cells.length; i++) {
+        if(today_num==0){
+            cells[i]["daysFromToday"] = i
+            var celldate = new Date();
+            celldate.setDate(today.getDate()+i)
+            cells[i]["date"] = String(celldate.getDate()).padStart(2, '0')+"/"+String(celldate.getMonth() + 1).padStart(2, '0')
+        }
+        else{
+            cells[i]["daysFromToday"] = i-today_num
+            var celldate = new Date();
+            celldate.setDate(today.getDate()+cells[i]["daysFromToday"])
+            cells[i]["date"] = String(celldate.getDate()).padStart(2, '0')+"/"+String(celldate.getMonth() + 1).padStart(2, '0')
+        }
+    }
+    
+    //INPUT SHIT
+    var shifts = [
+    ["09/03","PM"],
+    ["10/03",""],	
+    ["11/03","NI"],
+    ["12/03","NI"],
+    ["13/03","NI"],
+    ["14/03","NI"],
+    ["15/03",""],
+    ["16/03",""],
+    ["17/03",""],
+    ["18/03","AM"],
+    ["19/03","AM"],
+    ["20/03","AM"],
+    ["21/03",""],
+    ["22/03","AM"],
+    ["23/03","AM"],
+    ["24/03","AM"],
+    ["25/03","PM"],
+    ["26/03","ALL"],
+    ["27/03","ALL"],
+    ["28/03","AM"],
+    ["29/03","PM"],
+    ["30/03","ALL"],
+    ["31/03","ALL"],
+    ["01/04","ALL"],
+    ["02/04","ALL"],
+    ["03/04","ALL"],
+    ["04/04","PM"],
+    ["05/04","NI"],
+    ["06/04","NI"],
+    ["07/04","NI"],
+    ["08/04",""],
+    ["09/04",""],
+    ["10/04",""],
+    ["11/04",""],
+    ["12/04",""],
+    ["13/04",""],
+    ["14/04","PM"],
+    ["15/04","NI"],
+    ["16/04","NI"],
+    ["17/04","NI"]
+        ]
+
+
+    
+//UPDATE SHIT
+    
+    for (var i = 0; i <cells.length; i++){
+        for (var j = 0; j <shifts.length; j++){
+           if(cells[i]["date"]==shifts[j][0])
+            {
+               if(shifts[j][1]=="ALL"){
+               cells[i]["AM"]=0
+               cells[i]["PM"]=0
+               }
+               if(shifts[j][1]=="AM"){
+                cells[i]["AM"]=0
+               }
+               if(shifts[j][1]=="PM"){
+                cells[i]["PM"]=0
+               }
+               if(shifts[j][1]=="NI"){
+                cells[i]["AM"]=0
+                if(i<cells.length-1){
+                    cells[i+1]["AM"]=0
+                }
+
+               }
+            }   
+        }
+    }
+    
+
+    //Format
+    for (var i = 0; i <cells.length; i++) {
+        if (cells[i]["daysFromToday"]<0){
+            cells[i]["style"]= "background-color:#303030; color:#303030"
+        } else if (cells[i]["daysFromToday"]==0){
+            cells[i]["style"]= "background-color:#303030; color:#303030"
+        }else if (cells[i]["AM"]+cells[i]["PM"]==0){
+            cells[i]["style"]= "background-color:#303030; color:#606060"
+        }else if (cells[i]["AM"]+cells[i]["PM"]==1){
+            if (cells[i]["AM"]==1){
+                cells[i]["style"]= "background-color:#e0c000"
+            }
+            if (cells[i]["PM"]==1){
+                cells[i]["style"]= "background-color:#6050e0"
+            }
+        }      
+    }
+
+
+
+//javasscript to HTML
+{
+    document.getElementById("cell0").style=cells[0]["style"]
+    document.getElementById("cell1").style=cells[1]["style"]
+    document.getElementById("cell2").style=cells[2]["style"]
+    document.getElementById("cell3").style=cells[3]["style"]
+    document.getElementById("cell4").style=cells[4]["style"]
+    document.getElementById("cell5").style=cells[5]["style"]
+    document.getElementById("cell6").style=cells[6]["style"]
+
+    document.getElementById("cell7").style=cells[7]["style"]
+    document.getElementById("cell8").style=cells[8]["style"]
+    document.getElementById("cell9").style=cells[9]["style"]
+    document.getElementById("cell10").style=cells[10]["style"]
+    document.getElementById("cell11").style=cells[11]["style"]
+    document.getElementById("cell12").style=cells[12]["style"]
+    document.getElementById("cell13").style=cells[13]["style"]
+
+    document.getElementById("cell14").style=cells[14]["style"]
+    document.getElementById("cell15").style=cells[15]["style"]
+    document.getElementById("cell16").style=cells[16]["style"]
+    document.getElementById("cell17").style=cells[17]["style"]
+    document.getElementById("cell18").style=cells[18]["style"]
+    document.getElementById("cell19").style=cells[19]["style"]
+    document.getElementById("cell20").style=cells[20]["style"]
+    
+    document.getElementById("cell21").style=cells[21]["style"]
+    document.getElementById("cell22").style=cells[22]["style"]
+    document.getElementById("cell23").style=cells[23]["style"]
+    document.getElementById("cell24").style=cells[24]["style"]
+    document.getElementById("cell25").style=cells[25]["style"]
+    document.getElementById("cell26").style=cells[26]["style"]
+    document.getElementById("cell27").style=cells[27]["style"]
+
+    document.getElementById("cell28").style=cells[28]["style"]
+    document.getElementById("cell29").style=cells[29]["style"]
+    document.getElementById("cell30").style=cells[30]["style"]
+    document.getElementById("cell31").style=cells[31]["style"]
+    document.getElementById("cell32").style=cells[32]["style"]
+    document.getElementById("cell33").style=cells[33]["style"]
+    document.getElementById("cell34").style=cells[34]["style"]
+
+    document.getElementById("cell35").style=cells[35]["style"]
+    document.getElementById("cell36").style=cells[36]["style"]
+    document.getElementById("cell37").style=cells[37]["style"]
+    document.getElementById("cell38").style=cells[38]["style"]
+    document.getElementById("cell39").style=cells[39]["style"]
+    document.getElementById("cell40").style=cells[40]["style"]
+    document.getElementById("cell41").style=cells[41]["style"]
+
+    document.getElementById("cell0date").innerHTML=cells[0]["date"]
+    document.getElementById("cell1date").innerHTML=cells[1]["date"]
+    document.getElementById("cell2date").innerHTML=cells[2]["date"]
+    document.getElementById("cell3date").innerHTML=cells[3]["date"]
+    document.getElementById("cell4date").innerHTML=cells[4]["date"]
+    document.getElementById("cell5date").innerHTML=cells[5]["date"]
+    document.getElementById("cell6date").innerHTML=cells[6]["date"]
+
+    document.getElementById("cell7date").innerHTML=cells[7]["date"]
+    document.getElementById("cell8date").innerHTML=cells[8]["date"]
+    document.getElementById("cell9date").innerHTML=cells[9]["date"]
+    document.getElementById("cell10date").innerHTML=cells[10]["date"]
+    document.getElementById("cell11date").innerHTML=cells[11]["date"]
+    document.getElementById("cell12date").innerHTML=cells[12]["date"]
+    document.getElementById("cell13date").innerHTML=cells[13]["date"]
+
+    document.getElementById("cell14date").innerHTML=cells[14]["date"]
+    document.getElementById("cell15date").innerHTML=cells[15]["date"]
+    document.getElementById("cell16date").innerHTML=cells[16]["date"]
+    document.getElementById("cell17date").innerHTML=cells[17]["date"]
+    document.getElementById("cell18date").innerHTML=cells[18]["date"]
+    document.getElementById("cell19date").innerHTML=cells[19]["date"]
+    document.getElementById("cell20date").innerHTML=cells[20]["date"]
+    
+    document.getElementById("cell21date").innerHTML=cells[21]["date"]
+    document.getElementById("cell22date").innerHTML=cells[22]["date"]
+    document.getElementById("cell23date").innerHTML=cells[23]["date"]
+    document.getElementById("cell24date").innerHTML=cells[24]["date"]
+    document.getElementById("cell25date").innerHTML=cells[25]["date"]
+    document.getElementById("cell26date").innerHTML=cells[26]["date"]
+    document.getElementById("cell27date").innerHTML=cells[27]["date"]
+
+    document.getElementById("cell28date").innerHTML=cells[28]["date"]
+    document.getElementById("cell29date").innerHTML=cells[29]["date"]
+    document.getElementById("cell30date").innerHTML=cells[30]["date"]
+    document.getElementById("cell31date").innerHTML=cells[31]["date"]
+    document.getElementById("cell32date").innerHTML=cells[32]["date"]
+    document.getElementById("cell33date").innerHTML=cells[33]["date"]
+    document.getElementById("cell34date").innerHTML=cells[34]["date"]
+
+    document.getElementById("cell35date").innerHTML=cells[35]["date"]
+    document.getElementById("cell36date").innerHTML=cells[36]["date"]
+    document.getElementById("cell37date").innerHTML=cells[37]["date"]
+    document.getElementById("cell38date").innerHTML=cells[38]["date"]
+    document.getElementById("cell39date").innerHTML=cells[39]["date"]
+    document.getElementById("cell40date").innerHTML=cells[40]["date"]
+    document.getElementById("cell41date").innerHTML=cells[41]["date"]
+}
+    </script>
+</html>
