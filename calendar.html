@@ -2,121 +2,288 @@
 <html>
 
 <head>
-	<style>
-        body {font-family: arial}
-		table {
-			border-collapse: collapse;
-			background: white;
-			color: black;
-            font-family: arial
-		}
-		
-		th,
-		td {
-			font-weight: bold;
-            padding: 36px;
-		}
-	</style>
-</head>
+    <title>When is Alex Free?</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        body {
+          font-family: Arial;
+          padding: 10px;
+          background: #f1f1f1;
+        }
+        
+        /* Header/Blog Title */
+        .header {
+          padding: 30px;
+          text-align: center;
+          background: white;
+        }
+        
+        .header h1 {
+          font-size: 50px;
+        }
+        
+        /* Style the top navigation bar */
+        .topnav {
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        /* Style the topnav links */
+        .topnav a {
+          float: left;
+          display: block;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        /* Change color on hover */
+        .topnav a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+        
+        /* Create two unequal columns that floats next to each other */
+        /* Left column */
+        .leftcolumn {   
+          float: left;
+          width: 75%;
+        }
+        
+        /* Right column */
+        .rightcolumn {
+          float: left;
+          width: 25%;
+          background-color: #f1f1f1;
+          padding-left: 20px;
+        }
+        
+        /* Fake image */
+        .fakeimg {
+          background-color: #aaa;
+          width: 100%;
+          padding: 20px;
+        }
+        
+        /* Add a card effect for articles */
+        .card {
+          background-color: white;
+          padding: 20px;
+          margin-top: 20px;
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        
+        /* Footer */
+        .footer {
+          padding: 20px;
+          text-align: center;
+          background: #ddd;
+          margin-top: 20px;
+        }
+        
+        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 800px) {
+          .leftcolumn, .rightcolumn {   
+            width: 100%;
+            padding: 0;
+          }
+        }
+        
+        /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+        @media screen and (max-width: 400px) {
+          .topnav a {
+            float: none;
+            width: 100%;
+          }
+        }
 
+        table{
+            border-collapse: collapse;
+        }
+
+        th,td{
+            text-align: center;
+            padding: 20px;
+        }
+
+        indent {
+            margin-left: 20px;
+        }
+        </style>
 <body>
-	<h2 align="center" style="color: rgb(0, 0, 0);">
-		Alex's Availability
-	</h2>
-    <center style = "font-size:20px">
-    <span style="color: #e0c000;font-size:30px">
-		■
-	</span>Only for Brunch
-    <span style="color: #6050e0;font-size:30px">
-		■
-    </span>Only for Dinner/Drinks
-    <span style="color: #303030;font-size:30px">
-		■
-    </span>Unavailable</center>
-	<br />
 
-	<table bgcolor="lightgrey" align="center"
-		cellspacing="21" cellpadding="21">
+    <div class="header">
+      <h1>Alex's Website</h1>
+      <p>Instead of becoming more social competent, I made a website</p>
+    </div>
+    
+    <div class="topnav">
+      <a href="https://www.facebook.com/messages/t/1367267707">Message Me</a>
+      <!--
+      <a href="#">Link</a>
+      <a href="#">Link</a>
+      <a href="#" style="float:right">Link</a>
+    -->
+    </div>
+    
+    <div class="row">
+      <div class="leftcolumn">
+        <div class="card">
+          <h2>Alex's Availability</h2>
+          <h5><span id="availabilityDescription"></span></h5>
+          
+          <table cellpadding="0" cellspacing="0" width="100%" height="110%" border="0">
+               <td style ="width: 500px; background: white; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+                <center style = "font-size:20px">
+                <span style="color: #e0c000;font-size:30px">
+                    ■
+                </span>Only for Brunch
+                <span style="color: #6050e0;font-size:30px">
+                    ■
+                </span>Only for Dinner/Drinks
+                <span style="color: #303030;font-size:30px">
+                    ■
+                </span>Unavailable</center>
+                <br />
+            
+                <table bgcolor="lightgrey" align="center" width = 100% cellspacing="10" cellpadding="10">
+            
+                    <thead>
+                        <tr>
+                            <th style="color: white; background: purple;">
+                                Sun</th>
+                            <th style="color: white; background: purple;">
+                                Mon</th>
+                            <th style="color: white; background: purple;">
+                                Tue</th>
+                            <th style="color: white; background: purple;">
+                                Wed</th>
+                            <th style="color: white; background: purple;">
+                                Thu</th>
+                            <th style="color: white; background: purple;">
+                                Fri</th>
+                            <th style="color: white; background: purple;">
+                                Sat</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        <tr>
+                            <td id="cell0"><span id="cell0date"></span></td>
+                            <td id="cell1"><span id="cell1date"></span></td>
+                            <td id="cell2"><span id="cell2date"></span></td>
+                            <td id="cell3"><span id="cell3date"></span></td>
+                            <td id="cell4"><span id="cell4date"></span></td>
+                            <td id="cell5"><span id="cell5date"></span></td>
+                            <td id="cell6"><span id="cell6date"></span></td>
+                        </tr>
+                        <tr>
+                            <td id="cell7"><span id="cell7date"></span></td>
+                            <td id="cell8"><span id="cell8date"></span></td>
+                            <td id="cell9"><span id="cell9date"></span></td>
+                            <td id="cell10"><span id="cell10date"></span></td>
+                            <td id="cell11"><span id="cell11date"></span></td>
+                            <td id="cell12"><span id="cell12date"></span></td>
+                            <td id="cell13"><span id="cell13date"></span></td>
+                        </tr>
+                        <tr>
+                            <td id="cell14"><span id="cell14date"></span></td>
+                            <td id="cell15"><span id="cell15date"></span></td>
+                            <td id="cell16"><span id="cell16date"></span></td>
+                            <td id="cell17"><span id="cell17date"></span></td>
+                            <td id="cell18"><span id="cell18date"></span></td>
+                            <td id="cell19"><span id="cell19date"></span></td>
+                            <td id="cell20"><span id="cell20date"></span></td>
+                        </tr>
+                        <tr>
+                            <td id="cell21"><span id="cell21date"></span></td>
+                            <td id="cell22"><span id="cell22date"></span></td>
+                            <td id="cell23"><span id="cell23date"></span></td>
+                            <td id="cell24"><span id="cell24date"></span></td>
+                            <td id="cell25"><span id="cell25date"></span></td>
+                            <td id="cell26"><span id="cell26date"></span></td>
+                            <td id="cell27"><span id="cell27date"></span></td>
+                        </tr>
+                        <tr>
+                            <td id="cell28"><span id="cell28date"></span></td>
+                            <td id="cell29"><span id="cell29date"></span></td>
+                            <td id="cell30"><span id="cell30date"></span></td>
+                            <td id="cell31"><span id="cell31date"></span></td>
+                            <td id="cell32"><span id="cell32date"></span></td>
+                            <td id="cell33"><span id="cell33date"></span></td>
+                            <td id="cell34"><span id="cell34date"></span></td>
+                        </tr>
+                        <tr>
+                            <td id="cell35"><span id="cell35date"></span></td>
+                            <td id="cell36"><span id="cell36date"></span></td>
+                            <td id="cell37"><span id="cell37date"></span></td>
+                            <td id="cell38"><span id="cell38date"></span></td>
+                            <td id="cell39"><span id="cell39date"></span></td>
+                            <td id="cell40"><span id="cell40date"></span></td>
+                            <td id="cell41"><span id="cell41date"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+    
+               </td>
+         </table>
+            <!--
+          <p>Yeah</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            -->
+        </div>
 
-		<caption align="top">
-		</caption>
+        <!--
+        <div class="card">
+          <h2>TITLE HEADING</h2>
+          <h5>Title description, Sep 2, 2017</h5>
+          <div class="fakeimg" style="height:200px;">Image</div>
+          <p>Some text..</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        </div>-->
+      </div>
+      
+      <div class="rightcolumn">
+        <div class="card" style="line-height: 60%;">
+          <h2>Reviews<br> <br> <br></h2>
+          <p style="font-size:20px"><i>"Ground-breaking"</i></p>
+          <indent>— Alex</indent> <br> <br>
+          <p style="font-size:20px"><i>"I don't know her."</i></p>
+          <indent>— Mariah Carey</indent> <br> <br>
+          <p style="font-size:20px"><i>★★★★★</i></p>
+          <indent>— Your Dad</indent> <br> <br>
+        </div>
+        <!--
+        <div class="card">
+          <h3>Popular Post</h3>
+          <div class="fakeimg"><p>Image</p></div>
+          <div class="fakeimg"><p>Image</p></div>
+          <div class="fakeimg"><p>Image</p></div>
+        </div>
+        <div class="card">
+          <h3>Follow Me</h3>
+          <p>Some text..</p>
+        </div>    -->
+      </div>
+    </div>
 
-		<thead>
-			<tr>
-				<th style="color: white; background: purple;">
-					Sun</th>
-				<th style="color: white; background: purple;">
-					Mon</th>
-				<th style="color: white; background: purple;">
-					Tue</th>
-				<th style="color: white; background: purple;">
-					Wed</th>
-				<th style="color: white; background: purple;">
-					Thu</th>
-				<th style="color: white; background: purple;">
-					Fri</th>
-				<th style="color: white; background: purple;">
-					Sat</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<tr>
-				<td id="cell0"><span id="cell0date"></span></td>
-				<td id="cell1"><span id="cell1date"></span></td>
-				<td id="cell2"><span id="cell2date"></span></td>
-				<td id="cell3"><span id="cell3date"></span></td>
-				<td id="cell4"><span id="cell4date"></span></td>
-				<td id="cell5"><span id="cell5date"></span></td>
-				<td id="cell6"><span id="cell6date"></span></td>
-			</tr>
-			<tr>
-				<td id="cell7"><span id="cell7date"></span></td>
-				<td id="cell8"><span id="cell8date"></span></td>
-				<td id="cell9"><span id="cell9date"></span></td>
-				<td id="cell10"><span id="cell10date"></span></td>
-				<td id="cell11"><span id="cell11date"></span></td>
-				<td id="cell12"><span id="cell12date"></span></td>
-				<td id="cell13"><span id="cell13date"></span></td>
-			</tr>
-			<tr>
-				<td id="cell14"><span id="cell14date"></span></td>
-				<td id="cell15"><span id="cell15date"></span></td>
-				<td id="cell16"><span id="cell16date"></span></td>
-				<td id="cell17"><span id="cell17date"></span></td>
-				<td id="cell18"><span id="cell18date"></span></td>
-				<td id="cell19"><span id="cell19date"></span></td>
-				<td id="cell20"><span id="cell20date"></span></td>
-			</tr>
-			<tr>
-				<td id="cell21"><span id="cell21date"></span></td>
-				<td id="cell22"><span id="cell22date"></span></td>
-				<td id="cell23"><span id="cell23date"></span></td>
-				<td id="cell24"><span id="cell24date"></span></td>
-				<td id="cell25"><span id="cell25date"></span></td>
-				<td id="cell26"><span id="cell26date"></span></td>
-				<td id="cell27"><span id="cell27date"></span></td>
-			</tr>
-			<tr>
-				<td id="cell28"><span id="cell28date"></span></td>
-				<td id="cell29"><span id="cell29date"></span></td>
-				<td id="cell30"><span id="cell30date"></span></td>
-				<td id="cell31"><span id="cell31date"></span></td>
-				<td id="cell32"><span id="cell32date"></span></td>
-				<td id="cell33"><span id="cell33date"></span></td>
-				<td id="cell34"><span id="cell34date"></span></td>
-			</tr>
-			<tr>
-				<td id="cell35"><span id="cell35date"></span></td>
-				<td id="cell36"><span id="cell36date"></span></td>
-				<td id="cell37"><span id="cell37date"></span></td>
-				<td id="cell38"><span id="cell38date"></span></td>
-				<td id="cell39"><span id="cell39date"></span></td>
-				<td id="cell40"><span id="cell40date"></span></td>
-				<td id="cell41"><span id="cell41date"></span></td>
-			</tr>
-		</tbody>
-	</table>
+    <div class="footer">
+      <h2>  </h2>
+    </div>
+    
+    </body>
+	
 </body>
 <script>
     //Variables
@@ -245,7 +412,7 @@
         if (cells[i]["daysFromToday"]<0){
             cells[i]["style"]= "background-color:#303030; color:#303030"
         } else if (cells[i]["daysFromToday"]==0){
-            cells[i]["style"]= "background-color:#303030; color:#303030"
+            cells[i]["style"]= "background-color:#303030; color:#606060"
         }else if (cells[i]["AM"]+cells[i]["PM"]==0){
             cells[i]["style"]= "background-color:#303030; color:#606060"
         }else if (cells[i]["AM"]+cells[i]["PM"]==1){
@@ -357,6 +524,35 @@
     document.getElementById("cell39date").innerHTML=cells[39]["date"]
     document.getElementById("cell40date").innerHTML=cells[40]["date"]
     document.getElementById("cell41date").innerHTML=cells[41]["date"]
+
+    var dayWeek = today.getDay()
+
+    switch (today.getDay()) {
+    case 0:
+    dayWeek = "Sunday";
+        break;
+    case 1:
+    dayWeek = "Monday";
+        break;
+    case 2:
+    dayWeek = "Tuesday";
+        break;
+    case 3:
+    dayWeek = "Wednesday";
+        break;
+    case 4:
+    dayWeek = "Thursday";
+        break;
+    case 5:
+    dayWeek = "Friday";
+        break;
+    case 6:
+    dayWeek = "Saturday";
+    }
+    
+    document.getElementById("availabilityDescription").innerHTML="Today is "+dayWeek+", "+dd + '/' + mm
+    
+
 }
     </script>
 </html>
